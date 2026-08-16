@@ -1,0 +1,1108 @@
+model,question_id,question,expected_section,retrieved_chunk_ids,distances,hit@1,hit@3,context,answer,generation_time_seconds,correct,partially_correct,incorrect,unsupported,hallucinated
+Qwen3-4B-Instruct-2507,Q01,What is Retrieval-Augmented Generation?,RAG,"[0, 9, 13]","[0.8345712423324585, 0.8737350106239319, 0.9028241634368896]",True,True,"RAG Knowledge Base
+
+1. Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly known as RAG, is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are co
+
+an efficiently search large collections of embeddings. FAISS is a library designed for efficient similarity search over dense vectors.
+
+The general retrieval process is:
+
+Query
+→ Query Embedding
+→ Similarity Search
+→ Ranked Documents
+→ Top-K Results
+
+5. Corrective Retrieval-Augmented Generation
+
+Corrective Retrieval-Augmented Generation, commonly called CRAG, extends traditional RAG by evaluating the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, ret
+
+generation process more adaptive. Instead of always retrieving the same number of documents, the system can make decisions about retrieval and reflection.
+
+Self-RAG can improve response quality, but relying on a language model to critique its own output does not necessarily guarantee that every factual claim is independently verified.
+
+7. GraphRAG
+
+GraphRAG is a retrieval approach that uses graph structures to represent relationships between information.
+
+In a graph-based knowledge representatio","Retrieval-Augmented Generation (RAG) is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.",82.24847435099991,,,,,
+Qwen3-4B-Instruct-2507,Q02,How does RAG use an external knowledge base?,RAG,"[0, 26, 12]","[0.4874453842639923, 0.8391103148460388, 0.8645234107971191]",True,True,"RAG Knowledge Base
+
+1. Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly known as RAG, is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are co
+
+n algorithm.
+
+15. Limitations of Existing RAG Approaches
+
+Traditional RAG can fail when irrelevant information is retrieved.
+
+CRAG attempts to correct poor retrieval but primarily focuses on the retrieval stage.
+
+Self-RAG introduces self-reflection but relies on the model's ability to evaluate its own responses.
+
+GraphRAG improves relationship-based retrieval but does not automatically guarantee that the final response is factually correct.
+
+ReAct enables reasoning and external actions but the f
+
+s self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required.
+
+A simplified Self-RAG process is:
+
+User Query
+→ Retrieval
+→ Response Generation
+→ Self-Critique
+→ Evaluation
+→ Additional Retrieval or Revision
+→ Final Response
+
+Self-RAG attempts to make the generation process more adaptive. Instead of always retrieving the same number of documents, the sys",RAG uses an external knowledge base by retrieving relevant information from it and providing that information as context to the language model during response generation.,46.75650711399999,,,,,
+Qwen3-4B-Instruct-2507,Q03,What are the main stages of a typical RAG pipeline?,RAG,"[1, 3, 11]","[0.9426159262657166, 1.1271495819091797, 1.199784517288208]",True,True,"text to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are collected and divided into smaller chunks. Each chunk is converted into a numerical vector representation called an embedding. These embeddings are stored in a vector database. When a user submits a question, the question is also converted into an embedding. The system compares the query embedding with document embeddings and retrieves the most relevant chunks. The retrieved chunks are then provided
+
+ncorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several factors, including document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.
+
+2. Document Chunking
+
+Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.
+
+A document can be divided 
+
+d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g","The main stages of a typical RAG pipeline are:
+
+1. Document collection and division into smaller chunks.  
+2. Conversion of each chunk into a numerical vector representation (embedding).  
+3. Storage of the embeddings in a vector database.  
+4. Conversion of the user's question into an embedding.  
+5. Comparison of the query embedding with document embeddings to retrieve the most relevant chunks.  
+6. Providing the retrieved chunks for context construction.  
+7. Using a language model to generate a final answer based on the retrieved context.",92.07436964500016,,,,,
+Qwen3-4B-Instruct-2507,Q04,Why can RAG reduce hallucinations?,RAG,"[2, 19, 20]","[1.0540826320648193, 1.0825210809707642, 1.3518825769424438]",True,True,"h document embeddings and retrieves the most relevant chunks. The retrieved chunks are then provided to a language model, which generates the final answer.
+
+RAG can reduce hallucinations because the language model receives external evidence. However, RAG does not guarantee that the generated answer is correct. If irrelevant or incorrect documents are retrieved, the language model may generate an incorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several 
+
+eeds, and response qualities.
+
+The choice of LLM can therefore affect the performance of a RAG system.
+
+10. Hallucination in Large Language Models
+
+Hallucination occurs when a language model produces information that is unsupported, incorrect, fabricated, or inconsistent with available evidence.
+
+A response can appear fluent and confident while still containing false information.
+
+For example, if a document states that a company was founded in 2015 but the language model generates that the compa
+
+a document states that a company was founded in 2015 but the language model generates that the company was founded in 2012, the generated claim contradicts the available evidence.
+
+Hallucinations can occur because of insufficient knowledge, incorrect retrieval, ambiguous questions, outdated information, or errors during generation.
+
+11. Evidence and Hallucination Detection
+
+A generated answer can contain multiple individual claims. Each claim can be compared against retrieved evidence to determi",RAG can reduce hallucinations because the language model receives external evidence.,60.409548946000086,,,,,
+Qwen3-4B-Instruct-2507,Q05,Does RAG guarantee that generated answers are correct?,RAG,"[25, 0, 12]","[0.8238170742988586, 0.9563506245613098, 0.9843046069145203]",True,True,"ility of a generated response.
+
+Possible signals include:
+
+Semantic similarity
+Retrieval quality
+NLI result
+Evidence agreement
+Source quality
+Graph relationships
+Uncertainty
+
+A system can use these signals to classify a response into categories such as:
+
+Trusted
+Uncertain
+Hallucinated
+
+The exact scoring mechanism can be designed and experimentally evaluated as part of a proposed RAG or verification algorithm.
+
+15. Limitations of Existing RAG Approaches
+
+Traditional RAG can fail when irrelevant i
+
+RAG Knowledge Base
+
+1. Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly known as RAG, is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are co
+
+s self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required.
+
+A simplified Self-RAG process is:
+
+User Query
+→ Retrieval
+→ Response Generation
+→ Self-Critique
+→ Evaluation
+→ Additional Retrieval or Revision
+→ Final Response
+
+Self-RAG attempts to make the generation process more adaptive. Instead of always retrieving the same number of documents, the sys","No, RAG does not guarantee that generated answers are correct. The context indicates that traditional RAG can fail when irrelevant information is retrieved and that the generated responses can be uncertain or hallucinated, implying that correctness is not guaranteed.",72.57383666299984,,,,,
+Qwen3-4B-Instruct-2507,Q06,What factors affect the quality of a RAG system?,RAG,"[3, 12, 11]","[0.8941736221313477, 1.1593115329742432, 1.243356704711914]",True,True,"ncorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several factors, including document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.
+
+2. Document Chunking
+
+Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.
+
+A document can be divided 
+
+s self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required.
+
+A simplified Self-RAG process is:
+
+User Query
+→ Retrieval
+→ Response Generation
+→ Self-Critique
+→ Evaluation
+→ Additional Retrieval or Revision
+→ Final Response
+
+Self-RAG attempts to make the generation process more adaptive. Instead of always retrieving the same number of documents, the sys
+
+d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g","The factors that affect the quality of a RAG system are document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.",76.61501662399996,,,,,
+Qwen3-4B-Instruct-2507,Q07,What is document chunking?,Document Chunking,"[4, 3, 5]","[0.46356654167175293, 0.6065548062324524, 0.6530882120132446]",False,True,"that can be processed by an embedding model and retrieved independently.
+
+A document can be divided into fixed-size chunks based on characters, words, or tokens. Another approach is semantic chunking, where text is divided according to meaningful sections or topics.
+
+Chunk size affects retrieval performance. Very small chunks may lose important context, while very large chunks may contain unrelated information. Chunk overlap can be used to preserve information that occurs near the boundary betwe
+
+ncorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several factors, including document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.
+
+2. Document Chunking
+
+Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.
+
+A document can be divided 
+
+d information. Chunk overlap can be used to preserve information that occurs near the boundary between two chunks.
+
+For example, a document can be divided into chunks of 500 tokens with an overlap of 50 tokens. The optimal chunk size depends on the type and structure of the documents being processed.
+
+3. Text Embeddings
+
+Text embeddings are numerical representations of text. An embedding model converts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.",Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.,58.989310122999996,,,,,
+Qwen3-4B-Instruct-2507,Q08,What are the different ways a document can be divided into chunks?,Document Chunking,"[4, 5, 3]","[0.5809071063995361, 0.7192859053611755, 0.7550837993621826]",False,True,"that can be processed by an embedding model and retrieved independently.
+
+A document can be divided into fixed-size chunks based on characters, words, or tokens. Another approach is semantic chunking, where text is divided according to meaningful sections or topics.
+
+Chunk size affects retrieval performance. Very small chunks may lose important context, while very large chunks may contain unrelated information. Chunk overlap can be used to preserve information that occurs near the boundary betwe
+
+d information. Chunk overlap can be used to preserve information that occurs near the boundary between two chunks.
+
+For example, a document can be divided into chunks of 500 tokens with an overlap of 50 tokens. The optimal chunk size depends on the type and structure of the documents being processed.
+
+3. Text Embeddings
+
+Text embeddings are numerical representations of text. An embedding model converts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.
+
+ncorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several factors, including document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.
+
+2. Document Chunking
+
+Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.
+
+A document can be divided ","A document can be divided into fixed-size chunks based on characters, words, or tokens. Another approach is semantic chunking, where text is divided according to meaningful sections or topics.",49.64908254499983,,,,,
+Qwen3-4B-Instruct-2507,Q09,Why is chunk size important for retrieval performance?,Document Chunking,"[4, 3, 5]","[0.6499775648117065, 0.8140941858291626, 0.9527877569198608]",False,True,"that can be processed by an embedding model and retrieved independently.
+
+A document can be divided into fixed-size chunks based on characters, words, or tokens. Another approach is semantic chunking, where text is divided according to meaningful sections or topics.
+
+Chunk size affects retrieval performance. Very small chunks may lose important context, while very large chunks may contain unrelated information. Chunk overlap can be used to preserve information that occurs near the boundary betwe
+
+ncorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several factors, including document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.
+
+2. Document Chunking
+
+Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.
+
+A document can be divided 
+
+d information. Chunk overlap can be used to preserve information that occurs near the boundary between two chunks.
+
+For example, a document can be divided into chunks of 500 tokens with an overlap of 50 tokens. The optimal chunk size depends on the type and structure of the documents being processed.
+
+3. Text Embeddings
+
+Text embeddings are numerical representations of text. An embedding model converts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.","Chunk size is important for retrieval performance because very small chunks may lose important context, while very large chunks may contain unrelated information.",42.764222419999896,,,,,
+Qwen3-4B-Instruct-2507,Q10,How does chunk overlap help preserve context?,Document Chunking,"[5, 4, 3]","[0.8260748386383057, 0.8783085942268372, 0.9489509463310242]",False,True,"d information. Chunk overlap can be used to preserve information that occurs near the boundary between two chunks.
+
+For example, a document can be divided into chunks of 500 tokens with an overlap of 50 tokens. The optimal chunk size depends on the type and structure of the documents being processed.
+
+3. Text Embeddings
+
+Text embeddings are numerical representations of text. An embedding model converts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.
+
+that can be processed by an embedding model and retrieved independently.
+
+A document can be divided into fixed-size chunks based on characters, words, or tokens. Another approach is semantic chunking, where text is divided according to meaningful sections or topics.
+
+Chunk size affects retrieval performance. Very small chunks may lose important context, while very large chunks may contain unrelated information. Chunk overlap can be used to preserve information that occurs near the boundary betwe
+
+ncorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several factors, including document preprocessing, chunk size, chunk overlap, embedding quality, retrieval strategy, number of retrieved documents, context construction, and language model capability.
+
+2. Document Chunking
+
+Document chunking is the process of dividing a large document into smaller sections that can be processed by an embedding model and retrieved independently.
+
+A document can be divided ","Chunk overlap helps preserve context by ensuring that information near the boundary between two chunks is not lost, as the overlapping portion is shared between the two chunks and thus retained in both.",59.050095876999876,,,,,
+Qwen3-4B-Instruct-2507,Q11,What are text embeddings?,Text Embeddings,"[5, 6, 1]","[0.76286381483078, 0.897574782371521, 0.9668419361114502]",True,True,"d information. Chunk overlap can be used to preserve information that occurs near the boundary between two chunks.
+
+For example, a document can be divided into chunks of 500 tokens with an overlap of 50 tokens. The optimal chunk size depends on the type and structure of the documents being processed.
+
+3. Text Embeddings
+
+Text embeddings are numerical representations of text. An embedding model converts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.
+
+verts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.
+
+Texts with similar meanings should have similar vector representations. This property allows embedding models to be used for semantic search.
+
+Sentence Transformers are commonly used to generate sentence and paragraph embeddings. Models such as all-MiniLM-L6-v2 and all-mpnet-base-v2 can convert text into vector representations.
+
+For example, the sentences ""The automobile is fast"" and ""The car ha
+
+text to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are collected and divided into smaller chunks. Each chunk is converted into a numerical vector representation called an embedding. These embeddings are stored in a vector database. When a user submits a question, the question is also converted into an embedding. The system compares the query embedding with document embeddings and retrieves the most relevant chunks. The retrieved chunks are then provided","Text embeddings are numerical representations of text. An embedding model converts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space. Texts with similar meanings should have similar vector representations, allowing embedding models to be used for semantic search.",51.746650757,,,,,
+Qwen3-4B-Instruct-2507,Q12,Why are embeddings useful for semantic search?,Text Embeddings,"[7, 6, 8]","[0.7870162129402161, 0.9513875246047974, 0.9825470447540283]",False,False,"xt into vector representations.
+
+For example, the sentences ""The automobile is fast"" and ""The car has a high speed"" may have similar embeddings because they express related meanings.
+
+Embedding quality has a direct effect on retrieval quality. If the embedding model fails to capture the meaning of a query or document, the retrieval system may return irrelevant information.
+
+4. Vector Similarity
+
+After converting documents and queries into embeddings, a RAG system needs a method to determine whic
+
+verts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.
+
+Texts with similar meanings should have similar vector representations. This property allows embedding models to be used for semantic search.
+
+Sentence Transformers are commonly used to generate sentence and paragraph embeddings. Models such as all-MiniLM-L6-v2 and all-mpnet-base-v2 can convert text into vector representations.
+
+For example, the sentences ""The automobile is fast"" and ""The car ha
+
+fter converting documents and queries into embeddings, a RAG system needs a method to determine which documents are most relevant to a query.
+
+Cosine similarity is one commonly used similarity measure. It measures the angle between two vectors. A higher cosine similarity generally indicates that two text representations are more semantically similar.
+
+Vector databases and vector search libraries can efficiently search large collections of embeddings. FAISS is a library designed for efficient sim","Embeddings are useful for semantic search because texts with similar meanings should have similar vector representations. This property allows embedding models to be used for semantic search, enabling the system to find relevant documents based on meaning rather than exact keyword matches.",65.95624624699985,,,,,
+Qwen3-4B-Instruct-2507,Q13,Which Sentence Transformer models are mentioned in the document?,Text Embeddings,"[6, 17, 1]","[1.0299692153930664, 1.135625958442688, 1.1579186916351318]",False,False,"verts words, sentences, paragraphs, or documents into vectors in a high-dimensional numerical space.
+
+Texts with similar meanings should have similar vector representations. This property allows embedding models to be used for semantic search.
+
+Sentence Transformers are commonly used to generate sentence and paragraph embeddings. Models such as all-MiniLM-L6-v2 and all-mpnet-base-v2 can convert text into vector representations.
+
+For example, the sentences ""The automobile is fast"" and ""The car ha
+
+swer
+
+Possible actions include searching documents, querying databases, using APIs, or interacting with external tools.
+
+ReAct can be useful for tasks that require multiple steps or external information. However, the final response still needs to be evaluated for factual correctness.
+
+9. Large Language Models
+
+Large Language Models, or LLMs, are machine learning models trained on large amounts of text data. They can perform tasks such as question answering, summarization, translation, reasoning,
+
+text to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are collected and divided into smaller chunks. Each chunk is converted into a numerical vector representation called an embedding. These embeddings are stored in a vector database. When a user submits a question, the question is also converted into an embedding. The system compares the query embedding with document embeddings and retrieves the most relevant chunks. The retrieved chunks are then provided",The Sentence Transformer models mentioned in the document are all-MiniLM-L6-v2 and all-mpnet-base-v2.,57.0289020969999,,,,,
+Qwen3-4B-Instruct-2507,Q14,What happens if an embedding model fails to capture the meaning of a query?,Text Embeddings,"[7, 1, 9]","[0.9155793190002441, 1.1037132740020752, 1.2122819423675537]",False,False,"xt into vector representations.
+
+For example, the sentences ""The automobile is fast"" and ""The car has a high speed"" may have similar embeddings because they express related meanings.
+
+Embedding quality has a direct effect on retrieval quality. If the embedding model fails to capture the meaning of a query or document, the retrieval system may return irrelevant information.
+
+4. Vector Similarity
+
+After converting documents and queries into embeddings, a RAG system needs a method to determine whic
+
+text to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are collected and divided into smaller chunks. Each chunk is converted into a numerical vector representation called an embedding. These embeddings are stored in a vector database. When a user submits a question, the question is also converted into an embedding. The system compares the query embedding with document embeddings and retrieves the most relevant chunks. The retrieved chunks are then provided
+
+an efficiently search large collections of embeddings. FAISS is a library designed for efficient similarity search over dense vectors.
+
+The general retrieval process is:
+
+Query
+→ Query Embedding
+→ Similarity Search
+→ Ranked Documents
+→ Top-K Results
+
+5. Corrective Retrieval-Augmented Generation
+
+Corrective Retrieval-Augmented Generation, commonly called CRAG, extends traditional RAG by evaluating the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, ret","If the embedding model fails to capture the meaning of a query, the retrieval system may return irrelevant information.",58.36540971400018,,,,,
+Qwen3-4B-Instruct-2507,Q15,What is cosine similarity used for in RAG?,Vector Similarity,"[8, 9, 11]","[0.8450192213058472, 1.1233235597610474, 1.2253167629241943]",False,False,"fter converting documents and queries into embeddings, a RAG system needs a method to determine which documents are most relevant to a query.
+
+Cosine similarity is one commonly used similarity measure. It measures the angle between two vectors. A higher cosine similarity generally indicates that two text representations are more semantically similar.
+
+Vector databases and vector search libraries can efficiently search large collections of embeddings. FAISS is a library designed for efficient sim
+
+an efficiently search large collections of embeddings. FAISS is a library designed for efficient similarity search over dense vectors.
+
+The general retrieval process is:
+
+Query
+→ Query Embedding
+→ Similarity Search
+→ Ranked Documents
+→ Top-K Results
+
+5. Corrective Retrieval-Augmented Generation
+
+Corrective Retrieval-Augmented Generation, commonly called CRAG, extends traditional RAG by evaluating the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, ret
+
+d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g","Cosine similarity is used in RAG to determine which documents are most relevant to a query by measuring the angle between two vectors, with a higher cosine similarity indicating that the text representations are more semantically similar.",67.64969296800018,,,,,
+Qwen3-4B-Instruct-2507,Q16,What does a higher cosine similarity generally indicate?,Vector Similarity,"[8, 7, 24]","[1.0275874137878418, 1.363855004310608, 1.4404098987579346]",False,True,"fter converting documents and queries into embeddings, a RAG system needs a method to determine which documents are most relevant to a query.
+
+Cosine similarity is one commonly used similarity measure. It measures the angle between two vectors. A higher cosine similarity generally indicates that two text representations are more semantically similar.
+
+Vector databases and vector search libraries can efficiently search large collections of embeddings. FAISS is a library designed for efficient sim
+
+xt into vector representations.
+
+For example, the sentences ""The automobile is fast"" and ""The car has a high speed"" may have similar embeddings because they express related meanings.
+
+Embedding quality has a direct effect on retrieval quality. If the embedding model fails to capture the meaning of a query or document, the retrieval system may return irrelevant information.
+
+4. Vector Similarity
+
+After converting documents and queries into embeddings, a RAG system needs a method to determine whic
+
+her nodes. Edges between them can contain weights representing similarity, support, or contradiction.
+
+For example:
+
+Claim 1
+→ supported by → Evidence 1
+
+Claim 1
+→ contradicted by → Evidence 2
+
+Multiple claims can connect to multiple evidence sources, creating a graph that represents the overall evidence structure.
+
+14. Trust Score
+
+A trust score can combine multiple signals to estimate the reliability of a generated response.
+
+Possible signals include:
+
+Semantic similarity
+Retrieval quality
+NLI",A higher cosine similarity generally indicates that two text representations are more semantically similar.,41.82525844899965,,,,,
+Qwen3-4B-Instruct-2507,Q17,What is FAISS used for?,Vector Similarity,"[9, 8, 16]","[1.2558542490005493, 1.4495240449905396, 1.4555928707122803]",False,False,"an efficiently search large collections of embeddings. FAISS is a library designed for efficient similarity search over dense vectors.
+
+The general retrieval process is:
+
+Query
+→ Query Embedding
+→ Similarity Search
+→ Ranked Documents
+→ Top-K Results
+
+5. Corrective Retrieval-Augmented Generation
+
+Corrective Retrieval-Augmented Generation, commonly called CRAG, extends traditional RAG by evaluating the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, ret
+
+fter converting documents and queries into embeddings, a RAG system needs a method to determine which documents are most relevant to a query.
+
+Cosine similarity is one commonly used similarity measure. It measures the angle between two vectors. A higher cosine similarity generally indicates that two text representations are more semantically similar.
+
+Vector databases and vector search libraries can efficiently search large collections of embeddings. FAISS is a library designed for efficient sim
+
+. It combines reasoning with actions that allow a language model to interact with external tools or information sources.
+
+Instead of directly generating a final answer, the model can determine what action is required, perform the action, observe the result, and continue reasoning.
+
+A simplified ReAct process is:
+
+User Query
+→ Reason
+→ Action
+→ Observation
+→ Reason
+→ Action
+→ Observation
+→ Final Answer
+
+Possible actions include searching documents, querying databases, using APIs, or interacting w",FAISS is used for efficient similarity search over dense vectors.,52.62689208999973,,,,,
+Qwen3-4B-Instruct-2507,Q18,What is the general process from a query to Top-K retrieval?,Vector Similarity,"[29, 9, 28]","[1.1442599296569824, 1.1693577766418457, 1.21346116065979]",False,False,"ctive retrieval.
+
+The final architecture and algorithm will be determined based on experimental results and the limitations identified during development.
+
+an efficiently search large collections of embeddings. FAISS is a library designed for efficient similarity search over dense vectors.
+
+The general retrieval process is:
+
+Query
+→ Query Embedding
+→ Similarity Search
+→ Ranked Documents
+→ Top-K Results
+
+5. Corrective Retrieval-Augmented Generation
+
+Corrective Retrieval-Augmented Generation, commonly called CRAG, extends traditional RAG by evaluating the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, ret
+
+rieval, reasoning, evidence evaluation, and verification strategies can be combined into a more reliable RAG architecture.
+
+The system will be evaluated against existing approaches such as traditional RAG, CRAG, Self-RAG, GraphRAG, and ReAct.
+
+The proposed algorithm may incorporate adaptive retrieval, evidence scoring, query analysis, re-ranking, context selection, response verification, and corrective retrieval.
+
+The final architecture and algorithm will be determined based on experimental resu","The general process from a query to Top-K retrieval is:
+
+Query → Query Embedding → Similarity Search → Ranked Documents → Top-K Results.",49.49304080799993,,,,,
+Qwen3-4B-Instruct-2507,Q19,What is Corrective Retrieval-Augmented Generation?,CRAG,"[9, 0, 10]","[0.7706867456436157, 0.7744036316871643, 0.811028778553009]",True,True,"an efficiently search large collections of embeddings. FAISS is a library designed for efficient similarity search over dense vectors.
+
+The general retrieval process is:
+
+Query
+→ Query Embedding
+→ Similarity Search
+→ Ranked Documents
+→ Top-K Results
+
+5. Corrective Retrieval-Augmented Generation
+
+Corrective Retrieval-Augmented Generation, commonly called CRAG, extends traditional RAG by evaluating the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, ret
+
+RAG Knowledge Base
+
+1. Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly known as RAG, is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are co
+
+the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, retrieved documents are directly passed to the language model. In CRAG, the retrieved information is evaluated. If the retrieved information is considered insufficient or unreliable, the system can perform additional retrieval or corrective actions.
+
+The main objective of CRAG is to reduce errors caused by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Eva","Corrective Retrieval-Augmented Generation (CRAG) is a technique that extends traditional RAG by evaluating the quality of retrieved information before generating the final answer. In CRAG, the retrieved information is assessed; if it is considered insufficient or unreliable, the system performs additional retrieval or corrective actions. The main objective of CRAG is to reduce errors caused by poor retrieval.",79.45009894900022,,,,,
+Qwen3-4B-Instruct-2507,Q20,How does CRAG handle insufficient or unreliable retrieved information?,CRAG,"[10, 11, 26]","[0.6813185214996338, 0.7835519909858704, 1.0298972129821777]",True,True,"the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, retrieved documents are directly passed to the language model. In CRAG, the retrieved information is evaluated. If the retrieved information is considered insufficient or unreliable, the system can perform additional retrieval or corrective actions.
+
+The main objective of CRAG is to reduce errors caused by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Eva
+
+d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g
+
+n algorithm.
+
+15. Limitations of Existing RAG Approaches
+
+Traditional RAG can fail when irrelevant information is retrieved.
+
+CRAG attempts to correct poor retrieval but primarily focuses on the retrieval stage.
+
+Self-RAG introduces self-reflection but relies on the model's ability to evaluate its own responses.
+
+GraphRAG improves relationship-based retrieval but does not automatically guarantee that the final response is factually correct.
+
+ReAct enables reasoning and external actions but the f",CRAG handles insufficient or unreliable retrieved information by performing additional retrieval or corrective actions if the retrieved information is considered insufficient or unreliable.,59.93615476900004,,,,,
+Qwen3-4B-Instruct-2507,Q21,What is the primary objective of CRAG?,CRAG,"[11, 10, 26]","[0.844177782535553, 1.0733712911605835, 1.3913953304290771]",True,True,"d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g
+
+the quality of retrieved information before generating the final answer.
+
+In a basic RAG system, retrieved documents are directly passed to the language model. In CRAG, the retrieved information is evaluated. If the retrieved information is considered insufficient or unreliable, the system can perform additional retrieval or corrective actions.
+
+The main objective of CRAG is to reduce errors caused by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Eva
+
+n algorithm.
+
+15. Limitations of Existing RAG Approaches
+
+Traditional RAG can fail when irrelevant information is retrieved.
+
+CRAG attempts to correct poor retrieval but primarily focuses on the retrieval stage.
+
+Self-RAG introduces self-reflection but relies on the model's ability to evaluate its own responses.
+
+GraphRAG improves relationship-based retrieval but does not automatically guarantee that the final response is factually correct.
+
+ReAct enables reasoning and external actions but the f",The primary objective of CRAG is to reduce errors caused by poor retrieval.,57.35962632199971,,,,,
+Qwen3-4B-Instruct-2507,Q22,What is Self-RAG?,Self-RAG,"[12, 11, 0]","[0.9642753601074219, 1.0263410806655884, 1.209828495979309]",True,True,"s self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required.
+
+A simplified Self-RAG process is:
+
+User Query
+→ Retrieval
+→ Response Generation
+→ Self-Critique
+→ Evaluation
+→ Additional Retrieval or Revision
+→ Final Response
+
+Self-RAG attempts to make the generation process more adaptive. Instead of always retrieving the same number of documents, the sys
+
+d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g
+
+RAG Knowledge Base
+
+1. Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly known as RAG, is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are co","Self-RAG, or Self-Reflective Retrieval-Augmented Generation, is a system that introduces self-reflection into the RAG process. It can decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required. A simplified Self-RAG process includes: User Query → Retrieval → Response Generation → Self-Critique → Evaluation → Additional Retrieval or Revision → Final Response. Self-RAG makes the generation process more adaptive by deciding when retrieval is needed and revising responses based on evaluation.",95.34218365600009,,,,,
+Qwen3-4B-Instruct-2507,Q23,How does Self-RAG make the generation process more adaptive?,Self-RAG,"[12, 11, 0]","[0.8394389152526855, 0.8797289133071899, 1.0205620527267456]",True,True,"s self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required.
+
+A simplified Self-RAG process is:
+
+User Query
+→ Retrieval
+→ Response Generation
+→ Self-Critique
+→ Evaluation
+→ Additional Retrieval or Revision
+→ Final Response
+
+Self-RAG attempts to make the generation process more adaptive. Instead of always retrieving the same number of documents, the sys
+
+d by poor retrieval.
+
+A simplified CRAG pipeline is:
+
+User Query
+→ Initial Retrieval
+→ Retrieval Evaluation
+→ Correct Retrieval
+→ Additional Retrieval if Necessary
+→ Context Construction
+→ Language Model
+→ Final Answer
+
+CRAG focuses primarily on improving the quality of the evidence supplied to the language model.
+
+6. Self-RAG
+
+Self-RAG, or Self-Reflective Retrieval-Augmented Generation, introduces self-reflection into the RAG process.
+
+A Self-RAG system can decide when retrieval is necessary, g
+
+RAG Knowledge Base
+
+1. Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly known as RAG, is a technique that combines information retrieval with large language model generation. Instead of relying only on information stored inside the parameters of a language model, a RAG system retrieves relevant information from an external knowledge base and provides that information as context to the language model.
+
+A typical RAG pipeline contains several stages. First, documents are co","Self-RAG makes the generation process more adaptive by allowing the system to decide when retrieval is necessary, generate a response using retrieved evidence, evaluate its response, and revise the response when required. This self-reflection enables the system to dynamically adjust its retrieval and generation steps based on the quality and relevance of the retrieved information.",28.730996058000073,,,,,
+Qwen3-4B-Instruct-2507,Q24,What is GraphRAG and what does it use to represent relationships?,GraphRAG,"[14, 15, 13]","[0.5901396870613098, 0.7101870179176331, 0.7148846387863159]",True,True,"structures to represent relationships between information.
+
+In a graph-based knowledge representation, entities or concepts can be represented as nodes, while relationships between them can be represented as edges.
+
+For example:
+
+Company A
+→ founded by → Person B
+→ located in → City C
+→ owns → Company D
+
+Graph-based retrieval can help answer questions that require relationships between multiple entities or pieces of information.
+
+A simplified GraphRAG pipeline is:
+
+Documents
+→ Entity Extraction
+
+
+tities or pieces of information.
+
+A simplified GraphRAG pipeline is:
+
+Documents
+→ Entity Extraction
+→ Relationship Extraction
+→ Knowledge Graph
+→ Graph Retrieval
+→ Relevant Context
+→ Language Model
+→ Answer
+
+GraphRAG can be useful for multi-hop questions where simply retrieving individual document chunks may not provide enough connected information.
+
+8. ReAct
+
+ReAct stands for Reasoning and Acting. It combines reasoning with actions that allow a language model to interact with external tools or 
+
+generation process more adaptive. Instead of always retrieving the same number of documents, the system can make decisions about retrieval and reflection.
+
+Self-RAG can improve response quality, but relying on a language model to critique its own output does not necessarily guarantee that every factual claim is independently verified.
+
+7. GraphRAG
+
+GraphRAG is a retrieval approach that uses graph structures to represent relationships between information.
+
+In a graph-based knowledge representatio",GraphRAG is a retrieval approach that uses graph structures to represent relationships between information.,54.550399849000314,,,,,
+Qwen3-4B-Instruct-2507,Q25,Why is GraphRAG useful for multi-hop questions?,GraphRAG,"[15, 13, 14]","[0.7410825490951538, 0.9682909250259399, 1.1082618236541748]",True,True,"tities or pieces of information.
+
+A simplified GraphRAG pipeline is:
+
+Documents
+→ Entity Extraction
+→ Relationship Extraction
+→ Knowledge Graph
+→ Graph Retrieval
+→ Relevant Context
+→ Language Model
+→ Answer
+
+GraphRAG can be useful for multi-hop questions where simply retrieving individual document chunks may not provide enough connected information.
+
+8. ReAct
+
+ReAct stands for Reasoning and Acting. It combines reasoning with actions that allow a language model to interact with external tools or 
+
+generation process more adaptive. Instead of always retrieving the same number of documents, the system can make decisions about retrieval and reflection.
+
+Self-RAG can improve response quality, but relying on a language model to critique its own output does not necessarily guarantee that every factual claim is independently verified.
+
+7. GraphRAG
+
+GraphRAG is a retrieval approach that uses graph structures to represent relationships between information.
+
+In a graph-based knowledge representatio
+
+structures to represent relationships between information.
+
+In a graph-based knowledge representation, entities or concepts can be represented as nodes, while relationships between them can be represented as edges.
+
+For example:
+
+Company A
+→ founded by → Person B
+→ located in → City C
+→ owns → Company D
+
+Graph-based retrieval can help answer questions that require relationships between multiple entities or pieces of information.
+
+A simplified GraphRAG pipeline is:
+
+Documents
+→ Entity Extraction
+","GraphRAG is useful for multi-hop questions because it uses graph structures to represent relationships between entities, allowing the system to answer questions that require connections between multiple entities or pieces of information.",62.56688544999997,,,,,
+Qwen3-4B-Instruct-2507,Q26,What does ReAct stand for and how does it work?,ReAct,"[16, 15, 17]","[0.8400365114212036, 1.009321689605713, 1.0973024368286133]",True,True,". It combines reasoning with actions that allow a language model to interact with external tools or information sources.
+
+Instead of directly generating a final answer, the model can determine what action is required, perform the action, observe the result, and continue reasoning.
+
+A simplified ReAct process is:
+
+User Query
+→ Reason
+→ Action
+→ Observation
+→ Reason
+→ Action
+→ Observation
+→ Final Answer
+
+Possible actions include searching documents, querying databases, using APIs, or interacting w
+
+tities or pieces of information.
+
+A simplified GraphRAG pipeline is:
+
+Documents
+→ Entity Extraction
+→ Relationship Extraction
+→ Knowledge Graph
+→ Graph Retrieval
+→ Relevant Context
+→ Language Model
+→ Answer
+
+GraphRAG can be useful for multi-hop questions where simply retrieving individual document chunks may not provide enough connected information.
+
+8. ReAct
+
+ReAct stands for Reasoning and Acting. It combines reasoning with actions that allow a language model to interact with external tools or 
+
+swer
+
+Possible actions include searching documents, querying databases, using APIs, or interacting with external tools.
+
+ReAct can be useful for tasks that require multiple steps or external information. However, the final response still needs to be evaluated for factual correctness.
+
+9. Large Language Models
+
+Large Language Models, or LLMs, are machine learning models trained on large amounts of text data. They can perform tasks such as question answering, summarization, translation, reasoning,","ReAct stands for Reasoning and Acting. It works by combining reasoning with actions that allow a language model to interact with external tools or information sources. The process involves the following steps: the model receives a user query, reasons about the query, determines what action is needed, performs the action, observes the result, continues reasoning, performs another action, observes the result, and finally generates a final answer. Possible actions include searching documents, querying databases, using APIs, or interacting with external tools. This approach enables the model to handle tasks that require multiple steps or external information.",95.42815688400015,,,,,
+Qwen3-4B-Instruct-2507,Q27,What are some actions a ReAct system can perform?,ReAct,"[16, 17, 15]","[0.8531287908554077, 1.0327935218811035, 1.2315431833267212]",True,True,". It combines reasoning with actions that allow a language model to interact with external tools or information sources.
+
+Instead of directly generating a final answer, the model can determine what action is required, perform the action, observe the result, and continue reasoning.
+
+A simplified ReAct process is:
+
+User Query
+→ Reason
+→ Action
+→ Observation
+→ Reason
+→ Action
+→ Observation
+→ Final Answer
+
+Possible actions include searching documents, querying databases, using APIs, or interacting w
+
+swer
+
+Possible actions include searching documents, querying databases, using APIs, or interacting with external tools.
+
+ReAct can be useful for tasks that require multiple steps or external information. However, the final response still needs to be evaluated for factual correctness.
+
+9. Large Language Models
+
+Large Language Models, or LLMs, are machine learning models trained on large amounts of text data. They can perform tasks such as question answering, summarization, translation, reasoning,
+
+tities or pieces of information.
+
+A simplified GraphRAG pipeline is:
+
+Documents
+→ Entity Extraction
+→ Relationship Extraction
+→ Knowledge Graph
+→ Graph Retrieval
+→ Relevant Context
+→ Language Model
+→ Answer
+
+GraphRAG can be useful for multi-hop questions where simply retrieving individual document chunks may not provide enough connected information.
+
+8. ReAct
+
+ReAct stands for Reasoning and Acting. It combines reasoning with actions that allow a language model to interact with external tools or ","Some actions a ReAct system can perform include searching documents, querying databases, using APIs, or interacting with external tools.",42.605998247000116,,,,,
+Qwen3-4B-Instruct-2507,Q28,What is an LLM hallucination?,Hallucination,"[19, 20, 2]","[0.7342050671577454, 0.9661586284637451, 1.2532386779785156]",True,True,"eeds, and response qualities.
+
+The choice of LLM can therefore affect the performance of a RAG system.
+
+10. Hallucination in Large Language Models
+
+Hallucination occurs when a language model produces information that is unsupported, incorrect, fabricated, or inconsistent with available evidence.
+
+A response can appear fluent and confident while still containing false information.
+
+For example, if a document states that a company was founded in 2015 but the language model generates that the compa
+
+a document states that a company was founded in 2015 but the language model generates that the company was founded in 2012, the generated claim contradicts the available evidence.
+
+Hallucinations can occur because of insufficient knowledge, incorrect retrieval, ambiguous questions, outdated information, or errors during generation.
+
+11. Evidence and Hallucination Detection
+
+A generated answer can contain multiple individual claims. Each claim can be compared against retrieved evidence to determi
+
+h document embeddings and retrieves the most relevant chunks. The retrieved chunks are then provided to a language model, which generates the final answer.
+
+RAG can reduce hallucinations because the language model receives external evidence. However, RAG does not guarantee that the generated answer is correct. If irrelevant or incorrect documents are retrieved, the language model may generate an incorrect answer based on the retrieved information.
+
+The quality of a RAG system depends on several ","An LLM hallucination occurs when a language model produces information that is unsupported, incorrect, fabricated, or inconsistent with available evidence. A response can appear fluent and confident while still containing false information. For example, if a document states that a company was founded in 2015 but the language model generates that the company was founded in 2012, the generated claim contradicts the available evidence. Hallucinations can occur due to insufficient knowledge, incorrect retrieval, ambiguous questions, outdated information, or errors during generation.",89.50747622300014,,,,,
+Qwen3-4B-Instruct-2507,Q29,What are the three common categories in Natural Language Inference?,NLI,"[22, 24, 21]","[0.7822784185409546, 1.1219969987869263, 1.172546625137329]",True,True,"sing semantic similarity, natural language inference, source quality, retrieval quality, and other evidence-based techniques.
+
+12. Natural Language Inference
+
+Natural Language Inference, or NLI, is a task that determines the relationship between two pieces of text.
+
+The common NLI categories are:
+
+Entailment:
+The evidence supports the claim.
+
+Neutral:
+The evidence does not provide enough information to determine whether the claim is true.
+
+Contradiction:
+The evidence conflicts with the claim.
+
+N
+
+her nodes. Edges between them can contain weights representing similarity, support, or contradiction.
+
+For example:
+
+Claim 1
+→ supported by → Evidence 1
+
+Claim 1
+→ contradicted by → Evidence 2
+
+Multiple claims can connect to multiple evidence sources, creating a graph that represents the overall evidence structure.
+
+14. Trust Score
+
+A trust score can combine multiple signals to estimate the reliability of a generated response.
+
+Possible signals include:
+
+Semantic similarity
+Retrieval quality
+NLI
+
+contain multiple individual claims. Each claim can be compared against retrieved evidence to determine whether the evidence supports the claim.
+
+For example:
+
+Question:
+When was Company X founded?
+
+Retrieved evidence:
+Company X was founded in 2015.
+
+Generated answer:
+Company X was founded in 2012.
+
+The generated claim contradicts the retrieved evidence.
+
+A verification system can evaluate claims using semantic similarity, natural language inference, source quality, retrieval quality, and other e","The three common categories in Natural Language Inference are:
+
+1. Entailment: The evidence supports the claim.  
+2. Neutral: The evidence does not provide enough information to determine whether the claim is true.  
+3. Contradiction: The evidence conflicts with the claim.",71.72901612000032,,,,,
+Qwen3-4B-Instruct-2507,Q30,What signals can be combined to calculate a trust score?,Trust Score,"[24, 25, 21]","[0.7793058156967163, 1.2716896533966064, 1.4745161533355713]",True,True,"her nodes. Edges between them can contain weights representing similarity, support, or contradiction.
+
+For example:
+
+Claim 1
+→ supported by → Evidence 1
+
+Claim 1
+→ contradicted by → Evidence 2
+
+Multiple claims can connect to multiple evidence sources, creating a graph that represents the overall evidence structure.
+
+14. Trust Score
+
+A trust score can combine multiple signals to estimate the reliability of a generated response.
+
+Possible signals include:
+
+Semantic similarity
+Retrieval quality
+NLI
+
+ility of a generated response.
+
+Possible signals include:
+
+Semantic similarity
+Retrieval quality
+NLI result
+Evidence agreement
+Source quality
+Graph relationships
+Uncertainty
+
+A system can use these signals to classify a response into categories such as:
+
+Trusted
+Uncertain
+Hallucinated
+
+The exact scoring mechanism can be designed and experimentally evaluated as part of a proposed RAG or verification algorithm.
+
+15. Limitations of Existing RAG Approaches
+
+Traditional RAG can fail when irrelevant i
+
+contain multiple individual claims. Each claim can be compared against retrieved evidence to determine whether the evidence supports the claim.
+
+For example:
+
+Question:
+When was Company X founded?
+
+Retrieved evidence:
+Company X was founded in 2015.
+
+Generated answer:
+Company X was founded in 2012.
+
+The generated claim contradicts the retrieved evidence.
+
+A verification system can evaluate claims using semantic similarity, natural language inference, source quality, retrieval quality, and other e","The signals that can be combined to calculate a trust score are: semantic similarity, retrieval quality, NLI result, evidence agreement, source quality, graph relationships, and uncertainty.",63.342288542000006,,,,,
