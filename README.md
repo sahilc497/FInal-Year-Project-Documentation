@@ -1,113 +1,83 @@
 # Final Year Project Documentation
 
-This repository documents the progress and results of the Final Year Project focused on retrieval-augmented generation (RAG), model evaluation, and comparative analysis of LLM and embedding-based approaches.
+This repository documents a final-year project on retrieval-augmented generation (RAG), retrieval evaluation, and comparison of large language models.
 
-## Project Overview
-
-The project includes:
-- Initial dataset and knowledge base preparation for RAG
-- Week 1 retrieval experiments and analysis
-- Week 2 model comparison and evaluation results
-- CSV outputs for retrieval metrics and LLM comparison
-
-## Folder Structure
+## Project Contents
 
 ```text
-Mega Project/
-├── README.md
-├── dataset/
-│   └── Initial stage/
-│       ├── cleaned_rag_document.txt
-│       ├── phase 1 questions.docx
-│       └── rag_knowledge_base.txt.txt
-├── week 1/
-│   ├── Week_1.ipynb
-│   └── results/
-│       ├── minilm_retrieval_results.csv
-│       ├── mpnet_retrieval_results.csv
-│       └── retrieval_summary.csv
-├── week 2/
-│   ├── Week_2.ipynb
-│   └── result/
-│       ├── week2_gemma_results.csv
-│       ├── week2_llm_comparison.csv
-│       ├── week2_phi_results.csv
-│       └── week2_qwen_results.csv
-└── venv/
-    └── [Python virtual environment - excluded from git]
+README.md
+dataset/
+  Initial stage/
+    cleaned_rag_document.txt
+    phase 1 questions.docx
+    rag_knowledge_base.txt.txt
+week 1/
+  Week_1.ipynb
+  results/
+    minilm_retrieval_results.csv
+    mpnet_retrieval_results.csv
+    retrieval_summary.csv
+week 2/
+  Week_2.ipynb
+  result/
+    week2_gemma_results.csv
+    week2_llm_comparison.csv
+    week2_phi_results.csv
+    week2_qwen_results.csv
+week 3/
+  Week_3.ipynb
+  result/
+    week3_hitk_evaluation.csv
+    week3_hitk_evaluation_v2-c_s1000-200.csv
+    week3_hitk_evaluation_v2-c_s300-50.csv
+    week3_hitk_evaluation_v2-c_s400.csv
+    week3_hitk_evaluation_v2-c_s700-100.csv
 ```
 
-## Contents
-
 ### Dataset
-- **Initial stage/**: Contains the project knowledge base and initial cleaned dataset for RAG experiments.
-  - `cleaned_rag_document.txt`: Cleaned document used for retrieval and evaluation.
-  - `rag_knowledge_base.txt.txt`: Core knowledge base used for retrieval tasks.
-  - `phase 1 questions.docx`: Project question set for phase 1 evaluation.
 
-### Week 1 Analysis
-- **Week_1.ipynb**: Notebook for the first round of analysis and retrieval experiments.
-- **results/**: Output files from the embedding and retrieval stage.
-  - `minilm_retrieval_results.csv`: Retrieval results from MiniLM.
-  - `mpnet_retrieval_results.csv`: Retrieval results from MPNet.
-  - `retrieval_summary.csv`: Summary table comparing retrieval outputs.
+The `dataset/Initial stage/` directory contains the cleaned source document, the RAG knowledge base, and the phase 1 evaluation questions.
 
-### Week 2 Analysis
-- **Week_2.ipynb**: Notebook for the second phase of model comparison and experimentation.
-- **result/**: Result files from the week 2 evaluation.
-  - `week2_gemma_results.csv`: Results for the Gemma model.
-  - `week2_phi_results.csv`: Results for the Phi model.
-  - `week2_qwen_results.csv`: Results for the Qwen model.
-  - `week2_llm_comparison.csv`: Comparative summary across tested LLMs.
+### Week 1: Retrieval
 
-## Project Workflow
+`week 1/Week_1.ipynb` evaluates MiniLM and MPNet retrieval and produces the retrieval result and summary CSV files.
+
+### Week 2: LLM Comparison
+
+`week 2/Week_2.ipynb` compares Gemma, Phi, and Qwen. The `result/` directory contains model-specific outputs and the comparison summary.
+
+### Week 3: Hit@K Evaluation
+
+`week 3/Week_3.ipynb` evaluates Hit@K retrieval performance across multiple chunking configurations. The corresponding CSV files in `week 3/result/` contain the evaluation outputs for each configuration.
+
+## Workflow
 
 1. Prepare and clean the RAG dataset.
 2. Build the knowledge base and retrieval pipeline.
-3. Evaluate retrieval quality using different embedding models.
-4. Compare multiple LLMs for answer quality and performance.
-5. Document the findings and outputs in the project repository.
+3. Evaluate retrieval quality with different embedding models.
+4. Compare LLM answer quality and performance.
+5. Evaluate Hit@K across chunking configurations.
 
 ## Getting Started
 
-### Prerequisites
-- Python 3.8+
-- Jupyter Notebook / JupyterLab
-- Access to the project virtual environment
+### Requirements
 
-### Running the Notebooks
+- Python 3.8 or later
+- Jupyter Notebook or JupyterLab
+- The Python packages required by the notebooks
+
+### Run a notebook
 
 ```bash
 jupyter notebook "week 1/Week_1.ipynb"
 jupyter notebook "week 2/Week_2.ipynb"
+jupyter notebook "week 3/Week_3.ipynb"
 ```
 
-## Models and Evaluation
+The local `venv/` directory is ignored by Git and should be used only for local dependencies.
 
-- **MiniLM**: Lightweight embedding-based retrieval model
-- **MPNet**: Stronger sentence embedding model for retrieval tasks
-- **Gemma**: LLM evaluated in week 2
-- **Phi**: LLM evaluated in week 2
-- **Qwen**: LLM evaluated in week 2
+## Repository
 
-## Results Summary
+[FInal-Year-Project-Documentation](https://github.com/sahilc497/FInal-Year-Project-Documentation)
 
-The project contains both retrieval benchmarking results and LLM comparison outputs:
-- Retrieval metrics and summaries for MiniLM and MPNet
-- Comparative evaluation across Gemma, Phi, and Qwen
-- CSV outputs for further analysis and reporting
-
-## Repository Notes
-
-- The `venv/` directory is intentionally excluded from git tracking to keep the repository clean and lightweight.
-- Project files and experiment results are stored in `dataset/` and `week */` folders.
-
-## License
-
-This project is part of a Final Year academic project.
-
----
-
-**Repository**: [FInal-Year-Project-Documentation](https://github.com/sahilc497/FInal-Year-Project-Documentation)
-
-**Last Updated**: 2026-08-17
+Last updated: 2026-08-19
