@@ -1,0 +1,31 @@
+question_id,question,expected_section,answer,correct,partially_correct,incorrect,unsupported,hallucinated
+Q01,What is Retrieval-Augmented Generation?,RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q02,How does RAG use an external knowledge base?,RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q03,What are the main stages of a typical RAG pipeline?,RAG,--------------------------------------------------------------------------------,0,1,0,0,0
+Q04,Why can RAG reduce hallucinations?,RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q05,Does RAG guarantee that generated answers are correct?,RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q06,What factors affect the quality of a RAG system?,RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q07,What is document chunking?,Document Chunking,--------------------------------------------------------------------------------,1,0,0,0,0
+Q08,What are the different ways a document can be divided into chunks?,Document Chunking,--------------------------------------------------------------------------------,1,0,0,0,0
+Q09,Why is chunk size important for retrieval performance?,Document Chunking,--------------------------------------------------------------------------------,1,0,0,0,0
+Q10,How does chunk overlap help preserve context?,Document Chunking,--------------------------------------------------------------------------------,0,1,0,0,0
+Q11,What are text embeddings?,Text Embeddings,--------------------------------------------------------------------------------,1,0,0,0,0
+Q12,Why are embeddings useful for semantic search?,Text Embeddings,--------------------------------------------------------------------------------,1,0,0,0,0
+Q13,Which Sentence Transformer models are mentioned in the document?,Text Embeddings,--------------------------------------------------------------------------------,1,0,0,0,0
+Q14,What happens if an embedding model fails to capture the meaning of a query?,Text Embeddings,--------------------------------------------------------------------------------,1,0,0,0,0
+Q15,What is cosine similarity used for in RAG?,Vector Similarity,--------------------------------------------------------------------------------,1,0,0,0,0
+Q16,What does a higher cosine similarity generally indicate?,Vector Similarity,--------------------------------------------------------------------------------,1,0,0,0,0
+Q17,What is FAISS used for?,Vector Similarity,--------------------------------------------------------------------------------,1,0,0,0,0
+Q18,What is the general process from a query to Top-K retrieval?,Vector Similarity,--------------------------------------------------------------------------------,1,0,0,0,0
+Q19,What is Corrective Retrieval-Augmented Generation?,CRAG,--------------------------------------------------------------------------------,0,0,1,0,0
+Q20,How does CRAG handle insufficient or unreliable retrieved information?,CRAG,--------------------------------------------------------------------------------,0,1,0,0,0
+Q21,What is the primary objective of CRAG?,CRAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q22,What is Self-RAG?,Self-RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q23,How does Self-RAG make the generation process more adaptive?,Self-RAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q24,What is GraphRAG and what does it use to represent relationships?,GraphRAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q25,Why is GraphRAG useful for multi-hop questions?,GraphRAG,--------------------------------------------------------------------------------,1,0,0,0,0
+Q26,What does ReAct stand for and how does it work?,ReAct,--------------------------------------------------------------------------------,1,0,0,0,0
+Q27,What are some actions a ReAct system can perform?,ReAct,--------------------------------------------------------------------------------,1,0,0,0,0
+Q28,What is an LLM hallucination?,Hallucination,--------------------------------------------------------------------------------,1,0,0,0,0
+Q29,What are the three common categories in Natural Language Inference?,NLI,--------------------------------------------------------------------------------,1,0,0,0,0
+Q30,What signals can be combined to calculate a trust score?,Trust Score,--------------------------------------------------------------------------------,1,0,0,0,0

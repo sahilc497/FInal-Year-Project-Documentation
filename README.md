@@ -32,6 +32,10 @@ week 3/
     week3_hitk_evaluation_v2-c_s300-50.csv
     week3_hitk_evaluation_v2-c_s400.csv
     week3_hitk_evaluation_v2-c_s700-100.csv
+week 4/
+  Week_4.ipynb
+  result/
+    week4_final_baseline_evaluation.csv
 ```
 
 ### Dataset
@@ -50,6 +54,10 @@ The `dataset/Initial stage/` directory contains the cleaned source document, the
 
 `week 3/Week_3.ipynb` evaluates Hit@K retrieval performance across multiple chunking configurations. The corresponding CSV files in `week 3/result/` contain the evaluation outputs for each configuration.
 
+### Week 4: Baseline Evaluation
+
+`week 4/Week_4.ipynb` runs the final baseline evaluation. Its output is stored in `week 4/result/week4_final_baseline_evaluation.csv`.
+
 ## Workflow
 
 1. Prepare and clean the RAG dataset.
@@ -57,6 +65,7 @@ The `dataset/Initial stage/` directory contains the cleaned source document, the
 3. Evaluate retrieval quality with different embedding models.
 4. Compare LLM answer quality and performance.
 5. Evaluate Hit@K across chunking configurations.
+6. Run the final baseline evaluation.
 
 ## Getting Started
 
@@ -72,6 +81,7 @@ The `dataset/Initial stage/` directory contains the cleaned source document, the
 jupyter notebook "week 1/Week_1.ipynb"
 jupyter notebook "week 2/Week_2.ipynb"
 jupyter notebook "week 3/Week_3.ipynb"
+jupyter notebook "week 4/Week_4.ipynb"
 ```
 
 The local `venv/` directory is ignored by Git and should be used only for local dependencies.
